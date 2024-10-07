@@ -17,7 +17,17 @@ for filepath in filepaths:
     # don't add ()
     invoice_number =  filename.split('-')[0]
     #grab the first item off of the list created by the split function
+    date =  filename.split('-')[1]
+    #grab the second item off of the list created by the split function
+    
+    """
+    Another way of creating invoice_number and date:
+    invoice_number, date = filename.split('-')
+    """
     
     pdf.set_font(family='Times', size=16)
-    pdf.cell(w=50, h=8, txt = f'Invoice Number {invoice_number}')
+    pdf.cell(w=50, h=8, txt = f'Invoice Number {invoice_number}', ln=1)
+    
+    pdf.set_font(family='Times', size=16)
+    pdf.cell(w=50, h=8, txt = f'date: {date}')
     pdf.output(f'PDFs/{filename}.pdf')
